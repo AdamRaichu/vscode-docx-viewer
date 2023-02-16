@@ -1,0 +1,47 @@
+name: Initiate Repository
+permissions:
+  contents: write
+concurrency: init
+on:
+  workflow_dispatch:
+    inputs:
+      publisher_id:
+        description: The identifier of your marketplace publisher.
+        type: string
+        required: true
+      extension_id:
+        description: The identifier of your extension. Will be used in package.json, and must be unique among your extensions.
+        type: string
+        required: true
+      extension_name:
+        description: The user-visible name of your extension.
+        type: string
+        required: false
+        default: My New Web Extension
+      description:
+        description: A short description of what your extension does.
+        type: string
+        required: true
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: npm i
+      - name: Run Init Script
+        run: node ./init.js -r ${{ github.repository }} -p ${{ inputs.publisher_id }} -n ${{ inputs.extension_id }} -t "${{ inputs.extension_name }}" -a ${{ github.actor }} -d "${{ inputs.description }}"
+      - name: "Run `npm i` again so package-lock.json looks right" 
+        run: npm i
+      - name: Save changes
+        run: |
+          git pull
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "Initiate Repository"
+          git push

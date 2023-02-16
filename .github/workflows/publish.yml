@@ -1,0 +1,31 @@
+name: Publish Extension
+on:
+  workflow_dispatch:
+    inputs:
+      preRelease:
+        type: boolean
+        required: true
+        default: false
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout repository
+      - uses: nyaa8/package-version@v1
+      - name: Create a tag
+        run: |
+          git config user.name = "Github Actions"
+          git config user.email = "actions@github.com"
+          git tag -a v${{ env.PACKAGE_VERSION }} -m "Version ${{ env.PACKAGE_VERSION }}"
+          git push origin v${{ env.PACKAGE_VERSION }}
+      - name: Generate Files
+        run: |
+          npm i
+          npm run build
+      - name: Publish to Visual Studio Marketplace
+        uses: HaaLeo/publish-vscode-extension@v1
+        with:
+          pat: ${{ secrets.AZURE_PAT }}
+          registryUrl: https://marketplace.visualstudio.com
+          preRelease: ${{ inputs.preRelease }}
