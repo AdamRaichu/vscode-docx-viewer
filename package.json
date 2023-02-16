@@ -1,16 +1,16 @@
 {
-  "name": "$extension_name",
-  "displayName": "$display_name",
-  "description": "$description",
+  "name": "docx-viewer",
+  "displayName": "Docx Renderer",
+  "description": "An extension which provides a read-only renderer for docx files.",
   "version": "1.0.0",
-  "publisher": "$publisher_id",
+  "publisher": "adamraichu",
   "icon": "logo.png",
   "author": {
-    "name": "$author_name"
+    "name": "AdamRaichu"
   },
   "categories": [],
   "repository": {
-    "url": "https://github.com/$repo"
+    "url": "https://github.com/AdamRaichu/vscode-docx-viewer"
   },
   "browser": "/dist/main.js",
   "main": "/dist/main.js",
