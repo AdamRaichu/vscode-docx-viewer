@@ -34,4 +34,8 @@ export default class DocxEdit {
       panel.webview.postMessage({ command: "docData", data: ui8a });
     });
   }
+
+  openCustomDocument(uri, _context, _token) {
+    return new DocxDoc(uri);
+  }
 }
