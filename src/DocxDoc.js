@@ -1,3 +1,5 @@
+const vscode = require("vscode");
+
 export default class DocxDoc {
   constructor(uri) {
     this._uri = uri;
