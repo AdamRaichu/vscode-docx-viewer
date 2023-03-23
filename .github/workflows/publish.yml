@@ -6,6 +6,10 @@ on:
         type: boolean
         required: true
         default: false
+      continueOnTagErr:
+        type: boolean
+        required: false
+        default: false
 jobs:
   build:
     permissions:
@@ -16,6 +20,7 @@ jobs:
         name: Checkout repository
       - uses: nyaa8/package-version@v1
       - name: Create a tag
+        continue-on-error: ${{ inputs.continueOnTagErr }}
         run: |
           git config user.name = "Github Actions"
           git config user.email = "actions@github.com"
