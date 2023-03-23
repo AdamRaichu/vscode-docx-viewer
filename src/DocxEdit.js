@@ -23,6 +23,7 @@ export default class DocxEdit {
   <!--lib uses jszip-->
   <script src="${panel.webview.asWebviewUri(vscode.Uri.joinPath(extUri, "media", "jszip.min.js"))}"></script>
   <script src="${panel.webview.asWebviewUri(vscode.Uri.joinPath(extUri, "media", "docx-preview.min.js"))}"></script>
+  <script src="${panel.webview.asWebviewUri(vscode.Uri.joinPath(extUri, "media", "message-handling.js"))}"></script>
 </head>
 <body>
     <div id="container"></div>
