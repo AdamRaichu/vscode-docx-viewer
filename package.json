@@ -19,7 +19,9 @@
   "engines": {
     "vscode": "^1.63.0"
   },
-  "activationEvents": [],
+  "activationEvents": [
+    "onCustomEditor:docxViewer.DocxEdit"
+  ],
   "contributes": {
     "configuration": [
       {
