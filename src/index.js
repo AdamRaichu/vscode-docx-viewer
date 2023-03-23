@@ -1,3 +1,4 @@
+import DocxEdit from "./DocxEdit.js";
 const vscode = require("vscode");
 
-console.log("The web extension was activated!");
+DocxEdit.register();
