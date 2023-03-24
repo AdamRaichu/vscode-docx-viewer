@@ -11,6 +11,9 @@
   "categories": [
     "Visualization"
   ],
+  "keywords": [
+    "docx"
+  ],
   "repository": {
     "url": "https://github.com/AdamRaichu/vscode-docx-viewer"
   },
