@@ -32,7 +32,7 @@ export default class DocxEdit {
 `;
 
     document.getFileData().then(function (ui8a) {
-      panel.webview.postMessage({ command: "docData", data: ui8a });
+      panel.webview.postMessage({ command: "docData", data: ui8a, config: vscode.workspace.getConfiguration().docxViewer.docxjs });
     });
   }
 

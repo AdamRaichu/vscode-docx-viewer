@@ -1,8 +1,8 @@
 {
   "name": "docx-viewer",
   "displayName": "Docx Renderer",
-  "description": "An extension which provides a read-only renderer for docx files using the npm package docx-preview.",
-  "version": "1.0.0",
+  "description": "An extension which provides a read-only renderer for docx files using the npm package docx-preview. Now with configuration!",
+  "version": "1.1.0",
   "publisher": "adamraichu",
   "icon": "logo.png",
   "author": {
@@ -12,7 +12,9 @@
     "Visualization"
   ],
   "keywords": [
-    "docx"
+    "docx",
+    "preview",
+    "word"
   ],
   "repository": {
     "url": "https://github.com/AdamRaichu/vscode-docx-viewer"
@@ -39,6 +41,56 @@
             "type": "boolean",
             "description": "Disables rendering width of page",
             "default": false
+          },
+          "docxViewer.docxjs.ignoreHeight": {
+            "type": "boolean",
+            "description": "Disables rendering height of page",
+            "default": false
+          },
+          "docxViewer.docxjs.ignoreFonts": {
+            "type": "boolean",
+            "description": "Disables fonts rendering",
+            "default": false
+          },
+          "docxViewer.docxjs.breakPages": {
+            "type": "boolean",
+            "description": "Enables page breaking on page breaks",
+            "default": true
+          },
+          "docxViewer.docxjs.ignoreLastRenderedPageBreak": {
+            "type": "boolean",
+            "description": "disables page breaking on lastRenderedPageBreak elements",
+            "default": true
+          },
+          "docxViewer.docxjs.experimental": {
+            "type": "boolean",
+            "description": "enables experimental features (tab stops calculation)",
+            "default": false
+          },
+          "docxViewer.docxjs.trimXmlDeclaration": {
+            "type": "boolean",
+            "description": "if true, xml declaration will be removed from xml documents before parsing",
+            "default": true
+          },
+          "docxViewer.docxjs.useBase64URL": {
+            "type": "boolean",
+            "markdownDescription": "if true, images, fonts, etc. will be converted to base 64 URL, otherwise `URL.createObjectURL` is used",
+            "default": false
+          },
+          "docxViewer.docxjs.useMathMLPolyfill": {
+            "type": "boolean",
+            "description": "includes MathML polyfills for chrome, edge, etc.",
+            "default": false
+          },
+          "docxViewer.docxjs.showChanges": {
+            "type": "boolean",
+            "description": "enables experimental rendering of document changes (inserions/deletions)",
+            "default": false
+          },
+          "docxViewer.docxjs.debug": {
+            "type": "boolean",
+            "description": "enables additional logging",
+            "default": false
           }
         }
       }
@@ -60,6 +112,9 @@
     "@vscode/vsce": "^2.19.0",
     "webpack": "^5.83.1",
     "webpack-cli": "^5.1.1"
+  },
+  "dependencies": {
+    "docx-preview": "^0.1.15"
   },
   "scripts": {
     "build": "webpack"
