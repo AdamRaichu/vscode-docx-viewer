@@ -2,7 +2,7 @@
   "name": "docx-viewer",
   "displayName": "Docx Renderer",
   "description": "An extension which provides a read-only renderer for docx files using the npm package docx-preview. Now with configuration!",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "publisher": "adamraichu",
   "icon": "logo.png",
   "author": {
